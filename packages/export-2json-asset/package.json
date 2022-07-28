@@ -1,6 +1,6 @@
 {
   "name": "@fruits-chain/export-2json-asset-webpack-plugin",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A plugin to generate a json asset with your exported value",
   "main": "dist/index.cjs",
   "type": "module",
