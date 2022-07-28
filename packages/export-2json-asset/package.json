@@ -1,0 +1,45 @@
+{
+  "name": "@fruits-chain/export-2json-asset-webpack-plugin",
+  "version": "1.0.0",
+  "description": "A plugin to generate a json asset with your exported value",
+  "main": "dist/index.cjs",
+  "type": "module",
+  "module": "dist/index.mjs",
+  "types": "dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint": "eslint",
+    "dev": "yarn clean && rollup -c -w",
+    "build-bundle": "rollup -c",
+    "build": "run-s lint clean build-bundle"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "json",
+    "convert",
+    "generate",
+    "asset"
+  ],
+  "author": "changhuali <changhua.li.cq@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/changhuali/webpack-plugins",
+    "directory": "packages/export-2json-asset"
+  },
+  "bugs": {
+    "url": "https://github.com/changhuali/webpack-plugins/issues"
+  },
+  "homepage": "https://github.com/changhuali/webpack-plugins/tree/main/packages/export-2json-asset#readme",
+  "devDependencies": {
+    "@types/webpack-sources": "^3.2.0",
+    "webpack": "^5.74.0"
+  },
+  "dependencies": {
+    "webpack-sources": "^3.2.3"
+  }
+}
