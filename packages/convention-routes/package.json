@@ -1,0 +1,43 @@
+{
+  "name": "@fruits-chain/convention-routes-webpack-plugin",
+  "version": "1.0.0",
+  "description": "A plugin generating react-router routes followed by file conventions",
+  "main": "dist/index.cjs",
+  "type": "module",
+  "module": "dist/index.mjs",
+  "types": "dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint": "eslint",
+    "dev": "yarn clean && rollup -c -w",
+    "build-bundle": "rollup -c",
+    "build": "run-s lint clean build-bundle"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "convention",
+    "routes"
+  ],
+  "author": "changhuali <changhua.li.cq@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/changhuali/webpack-plugins",
+    "directory": "packages/convention-routes"
+  },
+  "bugs": {
+    "url": "https://github.com/changhuali/webpack-plugins/issues"
+  },
+  "homepage": "https://github.com/changhuali/webpack-plugins/tree/main/packages/convention-routes#readme",
+  "devDependencies": {
+    "@types/webpack-sources": "^3.2.0",
+    "webpack": "^5.74.0"
+  },
+  "dependencies": {
+    "webpack-sources": "^3.2.3"
+  }
+}
