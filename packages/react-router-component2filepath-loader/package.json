@@ -1,0 +1,37 @@
+{
+  "name": "@fruits-chain/react-router-component2filepath-loader",
+  "version": "1.0.0",
+  "description": "A loader to make the component in react-router config be a filepath",
+  "main": "dist/index.cjs",
+  "type": "module",
+  "module": "dist/index.mjs",
+  "types": "dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint": "eslint",
+    "dev": "yarn clean && rollup -c -w",
+    "build-bundle": "rollup -c",
+    "build": "run-s lint clean build-bundle"
+  },
+  "keywords": [
+    "webpack",
+    "loader",
+    "react-router",
+    "component2filepath"
+  ],
+  "author": "changhuali <changhua.li.cq@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/changhuali/webpack-plugins",
+    "directory": "packages/react-router-component2filepath-loader"
+  },
+  "bugs": {
+    "url": "https://github.com/changhuali/webpack-plugins/issues"
+  },
+  "homepage": "https://github.com/changhuali/webpack-plugins/tree/main/packages/react-router-component2filepath-loader#readme",
+  "devDependencies": {}
+}
