@@ -1,6 +1,6 @@
 {
   "name": "@fruits-chain/graphql-usage-statistics-webpack-plugin",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A plugin to collect graphql api usage info by your route config",
   "main": "dist/index.cjs",
   "type": "module",

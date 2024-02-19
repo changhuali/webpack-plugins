@@ -1,6 +1,6 @@
 {
   "name": "@fruits-chain/convention-routes-webpack-plugin",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A plugin generating react-router routes followed by file conventions",
   "main": "dist/index.cjs",
   "type": "module",
