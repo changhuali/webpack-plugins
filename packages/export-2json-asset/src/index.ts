@@ -12,7 +12,7 @@ declare const global: typeof globalThis & {
   }
 }
 
-const libraryName = '__default_export_json_asset__'
+export const libraryName = '__default_export_json_asset__'
 export default class Export2JsonAssetWebpackPlugin {
   options: Export2JsonAssetOptions
   constructor(options: Export2JsonAssetOptions) {
@@ -22,6 +22,7 @@ export default class Export2JsonAssetWebpackPlugin {
     new compiler.webpack.EntryPlugin(compiler.context, this.options.entryPath, {
       name: libraryName,
       filename: this.options.outputPath,
+      layer: this.options.outputPath,
       baseUri: '/',
       library: {
         name: libraryName,
@@ -31,19 +32,20 @@ export default class Export2JsonAssetWebpackPlugin {
     compiler.hooks.compilation.tap(
       'Export2JsonAssetWebpackPlugin',
       compilation => {
+        const logger = compilation.getLogger('Export2JsonAssetWebpackPlugin')
+
         compilation.hooks.processAssets.tap(
           {
             name: 'Export2JsonAssetWebpackPlugin',
-            stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONS,
+            stage:
+              compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_PRE_PROCESS,
           },
-          assets => {
-            const menuConfigAsset = Object.entries(assets).find(
-              ([pathname]) => {
-                return pathname === this.options.outputPath
-              },
+          () => {
+            const menuConfigAsset = compilation.getAsset(
+              this.options.outputPath,
             )
             if (menuConfigAsset) {
-              const script = menuConfigAsset[1]
+              const script = menuConfigAsset.source
                 .source()
                 .toString()
                 .replace(
@@ -52,12 +54,18 @@ export default class Export2JsonAssetWebpackPlugin {
                 )
               try {
                 ;(0, eval)(script)
-                const jsonStr = JSON.stringify(global[libraryName].default)
-                /** webpack type error */
-                ;(compilation.assets as any)[this.options.outputPath] =
-                  new RawSource(jsonStr)
+                const jsonObj = global[libraryName].default
+                const jsonStr = JSON.stringify(jsonObj)
+                compilation.updateAsset(
+                  this.options.outputPath,
+                  new RawSource(jsonStr) as any,
+                  {
+                    ...menuConfigAsset.info,
+                    rawData: jsonObj,
+                  },
+                )
               } catch (err) {
-                console.log('Export2JsonAssetWebpackPlugin err', err)
+                logger.error('Export2JsonAssetWebpackPlugin: ', err)
                 throw err
               }
             }
