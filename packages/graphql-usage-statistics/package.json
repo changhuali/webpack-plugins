@@ -1,0 +1,45 @@
+{
+  "name": "@fruits-chain/graphql-usage-statistics-webpack-plugin",
+  "version": "1.0.0",
+  "description": "A plugin to collect graphql api usage info by your route config",
+  "main": "dist/index.cjs",
+  "type": "module",
+  "module": "dist/index.mjs",
+  "types": "dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint": "eslint",
+    "dev": "yarn clean && rollup -c -w",
+    "build-bundle": "rollup -c",
+    "build": "run-s lint clean build-bundle"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "graphql",
+    "usage",
+    "statistics"
+  ],
+  "author": "changhuali <changhua.li.cq@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/changhuali/webpack-plugins",
+    "directory": "packages/graphql-usage-statistics"
+  },
+  "bugs": {
+    "url": "https://github.com/changhuali/webpack-plugins/issues"
+  },
+  "homepage": "https://github.com/changhuali/webpack-plugins/tree/main/packages/graphql-usage-statistics#readme",
+  "devDependencies": {
+    "@types/webpack-sources": "^3.2.0",
+    "webpack": "^5.74.0"
+  },
+  "dependencies": {
+    "graphql": "^16.8.1",
+    "webpack-sources": "^3.2.3"
+  }
+}
